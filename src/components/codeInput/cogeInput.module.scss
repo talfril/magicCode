@@ -1,0 +1,14 @@
+.input {
+  width: 100%;
+  min-height: 20vh;
+}
+
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.button {
+  align-self: flex-end;
+}
