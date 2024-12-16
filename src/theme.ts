@@ -19,6 +19,15 @@ export const theme = createTheme({
   },
   typography: {
     fontFamily: "AmaticSC-Regular, sans-serif",
+    h1: {
+      fontFamily: "AmaticSC-Bold, sans-serif",
+    },
+    h2: {
+      fontFamily: "AmaticSC-Bold, sans-serif",
+    },
+    h3: {
+      fontFamily: "AmaticSC-Bold, sans-serif",
+    },
   },
   components: {
     MuiCssBaseline: {
@@ -98,6 +107,13 @@ export const theme = createTheme({
         },
       },
     },
+    MuiCard: {
+      styleOverrides: {
+        root: {
+          padding: "2vw",
+        },
+      },
+    },
     MuiInputLabel: {
       styleOverrides: {
         root: {
@@ -111,13 +127,13 @@ export const theme = createTheme({
       styleOverrides: {
         root: {
           "& .MuiOutlinedInput-root": {
-            borderColor: "#006561", 
+            borderColor: "#006561",
           },
           "& .MuiSelect-select": {
-            color: "#ffffff", 
+            color: "#ffffff",
           },
           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#006561", 
+            borderColor: "#006561",
           },
         },
       },
@@ -125,15 +141,22 @@ export const theme = createTheme({
     MuiOutlinedInput: {
       styleOverrides: {
         notchedOutline: {
-          borderWidth: "1px", 
-          borderColor: "#006561", 
+          borderWidth: "1px",
+          borderColor: "#006561",
         },
       },
     },
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          color: "#000000", 
+          color: "#000000",
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        input: {
+          color: "#000000",
         },
       },
     },
