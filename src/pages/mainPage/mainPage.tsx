@@ -2,6 +2,18 @@
 import styles from "./mainPage.module.scss";
 import useDevice from "../../utils/useDevice";
 import clsx from "clsx";
+import Task from "../../components/task/task";
+import ChangeLanguage from "../../components/changeLanguage/changeLanguage";
+import CodeInput from "../../components/codeInput/codeInput";
+import Result from "../../components/result/result";
+import {
+  mockTask,
+  mockTaskExample,
+  mockLanguages,
+  mockResultDescription,
+  mockResultText
+} from "../../assets/data/mocks";
+import { Box } from "@mui/material";
 
 // import // initRequest,
 // // fetchStatus
@@ -12,11 +24,12 @@ export const MainPage = () => {
 
   return (
     <main className={clsx(styles.pageStyle, styles[`pageStyle__${device}`])}>
-      <div>Описание задачи</div>
-      <div>Выбор языка</div>
-      <div>Редактор кода</div>
-      <div>Кнопка отправки на сервер</div>
-      <div>Отображение результата</div>
+      <Box className={clsx(styles.layout, styles[`layout__${device}`])}>
+        <Task taskDescription={mockTask} taskExample={mockTaskExample} />
+        <ChangeLanguage languages={mockLanguages} />
+        <CodeInput />
+        <Result ResultDescription={mockResultDescription} ResultText={mockResultText}/>
+      </Box>
     </main>
   );
 };
