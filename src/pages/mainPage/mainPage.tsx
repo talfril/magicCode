@@ -21,6 +21,7 @@ import { Box } from "@mui/material";
 
 export const MainPage = () => {
   const device = useDevice();
+  console.log(device)
 
   return (
     <main className={clsx(styles.pageStyle, styles[`pageStyle__${device}`])}>
