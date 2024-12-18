@@ -27,6 +27,7 @@
   "devDependencies": {
     "@eslint/js": "^9.9.0",
     "@types/codemirror": "^5.60.15",
+    "@types/node": "^22.10.2",
     "@types/react": "^18.3.17",
     "@types/react-dom": "^18.3.5",
     "@types/react-router-dom": "^5.3.3",

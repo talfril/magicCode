@@ -1,5 +1,7 @@
 import styles from "./title.module.scss";
 import { Typography } from "@mui/material";
+import React from "react";
+
 
 export const Title = ({ titleText }: { titleText: string }) => {
     return (
