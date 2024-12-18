@@ -1,4 +1,5 @@
-// import { useState } from "react";
+import { useState } from "react";
+import React from "react";
 import styles from "./mainPage.module.scss";
 import useDevice from "../../utils/useDevice";
 import clsx from "clsx";
@@ -9,30 +10,45 @@ import CodeInput from "../../components/codeInput/codeInput";
 import Result from "../../components/result/result";
 import {
   mockTask,
-  // mockTaskExample,
-  mockLanguages,
   mockResultDescription,
   mockResultText,
-  mockProblemSolution
+  mockProblemSolution,
 } from "../../assets/data/mocks";
 import { Box } from "@mui/material";
 
-// import // initRequest,
-// // fetchStatus
-// "../../utils/api";
+type Language = keyof typeof mockProblemSolution;
 
 export const MainPage = () => {
   const device = useDevice();
-  console.log(device)
+  const [selectedLanguage, setSelectedLanguage] = useState<Language | null>(
+    null
+  );
+
+  const languages = Object.keys(mockProblemSolution) as Array<Language>;
+
+  const handleLanguageChange = (language: string) => {
+    setSelectedLanguage(language as Language);
+  };
 
   return (
     <main className={clsx(styles.pageStyle, styles[`pageStyle__${device}`])}>
       <Box className={clsx(styles.layout, styles[`layout__${device}`])}>
-        <Title titleText="Magic Code"/>
+        <Title titleText='Magic Code' />
         <Task taskDescription={mockTask} />
-        <ChangeLanguage languages={mockLanguages} />
-        <CodeInput defaultText={mockProblemSolution.JavaScript}/>
-        <Result ResultDescription={mockResultDescription} ResultText={mockResultText}/>
+        <ChangeLanguage
+          languages={languages}
+          onLanguageChange={handleLanguageChange}
+        />
+        <CodeInput
+          defaultText={
+            selectedLanguage ? mockProblemSolution[selectedLanguage] : ""
+          }
+          language={selectedLanguage || "JavaScript"}
+        />{" "}
+        <Result
+          ResultDescription={mockResultDescription}
+          ResultText={mockResultText}
+        />
       </Box>
     </main>
   );

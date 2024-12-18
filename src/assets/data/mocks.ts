@@ -53,4 +53,4 @@ int main() {
 
 export const mockResultDescription = "Браво! Задача решена верно!";
 
-export const mockResultText = "Максимальное число в массиве - 8"
+export const mockResultText = "Если массив [3, 5, 7, 2, 8, 1] - максимальное число в массиве - 8"

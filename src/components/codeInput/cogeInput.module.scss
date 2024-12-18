@@ -2,12 +2,12 @@
   width: 100%;
   padding: 10px;
   font-size: 1rem;
-  font-family: 'AmaticSC-Regular', sans-serif;
+  font-family: "AmaticSC-Regular", sans-serif;
   line-height: 1.5;
-  background-color: transparent; 
+  background-color: transparent;
   border: none;
-  resize: none; 
-  outline: none; 
+  resize: none;
+  outline: none;
 }
 
 .inputBlock {
@@ -16,6 +16,11 @@
   gap: 2vh;
 }
 
-.button {
-  align-self: flex-end;
+// .button {
+//   align-self: flex-end;
+// }
+
+.buttonMenu {
+  display: flex;
+  justify-content: space-between;
 }

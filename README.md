@@ -5,9 +5,15 @@
 
 ## Основной стек: React, typeScript, Marerial UI, scss, сборка на vite
 
-### Актуальная демонстрационная версия: https://magic-code-jyj26d7c8-talfrils-projects.vercel.app/
+### Актуальная демонстрационная версия: https://talfrils-magic-code.vercel.app/
 >>>>>>> master
 
+Запуск приложения:
+npm install
+npm run dev
+
+# Приложение запустится на http://localhost:5173/ (или другом порту).
+```
 
 
 План на завтра:

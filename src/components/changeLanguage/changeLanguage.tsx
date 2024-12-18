@@ -12,13 +12,19 @@ import { useState } from "react";
 
 interface ChangeLanguageProps {
   languages: string[];
+  onLanguageChange: (language: string) => void; 
 }
 
-export const ChangeLanguage = ({ languages }: ChangeLanguageProps) => {
+export const ChangeLanguage = ({
+  languages,
+  onLanguageChange,
+}: ChangeLanguageProps) => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>("");
 
   const handleChange = (event: SelectChangeEvent<string>) => {
-    setSelectedLanguage(event.target.value);
+    const newLanguage = event.target.value;
+    setSelectedLanguage(newLanguage);
+    onLanguageChange(newLanguage); 
   };
 
   return (
