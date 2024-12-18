@@ -18,14 +18,14 @@
 
 1. Клонируйте репозиторий:
 
-   ``` git clonehttps://github.com/talfril/magicCode.git``` 
+   `git clonehttps://github.com/talfril/magicCode.git`
 Установите зависимости:
 
-```npm install
+`npm install`
 
 Запустите приложение в режиме разработки:
 
-```npm run dev
+`npm run dev`
 
 Приложение будет доступно по адресу http://localhost:5173 (или другому порту).
 
