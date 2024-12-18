@@ -1,18 +1,22 @@
-import { Box, Typography, Card, Button, TextareaAutosize } from "@mui/material";
+import { Box, Typography, Card, Button } from "@mui/material";
 import styles from "./cogeInput.module.scss";
 import React, { useState, useEffect, forwardRef } from "react";
+import AceEditor from "react-ace";
+import "ace-builds/src-noconflict/mode-javascript";
+import "ace-builds/src-noconflict/mode-python";
+import "ace-builds/src-noconflict/mode-c_cpp";
+import "ace-builds/src-noconflict/theme-textmate";
+
+type ProgrammingLanguage = "JavaScript" | "Python" | "C++";
 
 interface CodeInputProps {
   defaultText: string;
-  language: "JavaScript" | "Python" | "C++";
-  onCheck: (
-    inputValue: string,
-    language: "JavaScript" | "Python" | "C++"
-  ) => void;
+  language: ProgrammingLanguage;
+  onCheck: (inputValue: string, language: ProgrammingLanguage) => void;
   onChange: () => void;
 }
 
-const CodeInput = forwardRef<HTMLTextAreaElement, CodeInputProps>(
+const CodeInput = forwardRef<AceEditor | null, CodeInputProps>(
   ({ defaultText, language, onCheck, onChange }, ref) => {
     const [currentValue, setCurrentValue] = useState<string>(defaultText);
 
@@ -20,8 +24,8 @@ const CodeInput = forwardRef<HTMLTextAreaElement, CodeInputProps>(
       setCurrentValue(defaultText);
     }, [defaultText]);
 
-    const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-      setCurrentValue(event.target.value);
+    const handleChange = (value: string) => {
+      setCurrentValue(value);
       onChange();
     };
 
@@ -36,17 +40,22 @@ const CodeInput = forwardRef<HTMLTextAreaElement, CodeInputProps>(
     return (
       <Box>
         <Typography variant='h4' component='h2' color='primary' gutterBottom>
-          Введите ваше решение для {language}
+          Введите ваше решение
         </Typography>
         <div className={styles.inputBlock}>
           <Card>
-            <TextareaAutosize
+            <AceEditor
+              mode={language.toLowerCase()}
+              theme='textmate'
               value={currentValue}
+              fontSize={18}
               onChange={handleChange}
-              className={styles.input}
-              minRows={4}
-              maxRows={100}
+              name='code-editor'
+              editorProps={{ $blockScrolling: true }}
+              height='50vh'
               ref={ref}
+              className={styles.aceEditor}
+              showPrintMargin={false}
             />
           </Card>
           <div className={styles.buttonMenu}>
@@ -55,18 +64,14 @@ const CodeInput = forwardRef<HTMLTextAreaElement, CodeInputProps>(
               className={styles.button}
               onClick={handleClear}
             >
-              <Typography variant='h5' component='p' color='secondary'>
-                Очистить
-              </Typography>
+              Очистить
             </Button>
             <Button
               variant='contained'
               className={styles.button}
               onClick={handleCheck}
             >
-              <Typography variant='h5' component='p' color='secondary'>
-                Проверить
-              </Typography>
+              Проверить
             </Button>
           </div>
         </div>
@@ -74,5 +79,4 @@ const CodeInput = forwardRef<HTMLTextAreaElement, CodeInputProps>(
     );
   }
 );
-
 export default CodeInput;

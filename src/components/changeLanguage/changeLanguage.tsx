@@ -9,7 +9,6 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import React from "react";
-// import styles from "./changeLanguage.module.scss"
 
 interface ChangeLanguageProps {
   languages: string[];

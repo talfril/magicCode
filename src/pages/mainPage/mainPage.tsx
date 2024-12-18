@@ -18,6 +18,7 @@ import {
   mockCorrectSolution,
 } from "../../assets/data/mocks";
 import { Box } from "@mui/material";
+import AceEditor from "react-ace";
 
 type Language = keyof typeof mockProblemSolution;
 
@@ -35,7 +36,7 @@ export const MainPage = () => {
     null
   );
 
-  const userCodeRef = useRef<HTMLTextAreaElement>(null);
+  const userCodeRef = useRef<AceEditor | null>(null);
 
   const languages = Object.keys(mockProblemSolution) as Array<Language>;
 
@@ -74,7 +75,7 @@ export const MainPage = () => {
 
   const checkAnswer = () => {
     setLoadingAnswer(true);
-    const userCode = userCodeRef.current?.value || "";
+    const userCode = userCodeRef.current?.editor.getValue() || ""; 
 
     setTimeout(() => {
       try {
@@ -114,7 +115,7 @@ export const MainPage = () => {
           defaultText={
             selectedLanguage ? mockProblemSolution[selectedLanguage] : ""
           }
-          language={selectedLanguage}
+          language={selectedLanguage || "JavaScript"} 
           onCheck={checkAnswer}
           onChange={handleCodeChange}
         />
