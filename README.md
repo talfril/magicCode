@@ -19,7 +19,7 @@
 1. Клонируйте репозиторий:
 
  ```
- git clonehttps://github.com/talfril/magicCode.git
+ git clone https://github.com/talfril/magicCode.git
  ```
 Установите зависимости:
 ```
